@@ -211,24 +211,24 @@ public class SwiftWebVC: UIViewController {
     ////////////////////////////////////////////////
     // Target Actions
     
-    func goBackTapped(_ sender: UIBarButtonItem) {
+    @objc func goBackTapped(_ sender: UIBarButtonItem) {
         webView.goBack()
     }
     
-    func goForwardTapped(_ sender: UIBarButtonItem) {
+    @objc func goForwardTapped(_ sender: UIBarButtonItem) {
         webView.goForward()
     }
     
-    func reloadTapped(_ sender: UIBarButtonItem) {
+    @objc func reloadTapped(_ sender: UIBarButtonItem) {
         webView.reload()
     }
     
-    func stopTapped(_ sender: UIBarButtonItem) {
+    @objc func stopTapped(_ sender: UIBarButtonItem) {
         webView.stopLoading()
         updateToolbarItems()
     }
     
-    func actionButtonTapped(_ sender: AnyObject) {
+    @objc func actionButtonTapped(_ sender: AnyObject) {
         
         if let url: URL = ((webView.url != nil) ? webView.url : request.url) {
             let activities: NSArray = [SwiftWebVCActivitySafari(), SwiftWebVCActivityChrome()]
@@ -252,15 +252,14 @@ public class SwiftWebVC: UIViewController {
     }
     
     ////////////////////////////////////////////////
-    
-    func doneButtonTapped() {
+    @objc func doneButtonTapped() {
         closing = true
         UINavigationBar.appearance().barStyle = storedStatusColor!
         self.dismiss(animated: true, completion: nil)
     }
-
+    
     // MARK: - Class Methods
-
+    
     /// Helper function to get image within SwiftWebVCResources bundle
     ///
     /// - parameter named: The name of the image in the SwiftWebVCResources bundle
